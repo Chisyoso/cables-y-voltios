@@ -1,0 +1,1 @@
+g++ main.cpp code.cpp dib.cpp escri.cpp menu.cpp func.cpp -o programa -I/home/ezequiel/build/raylib/src -L/home/ezequiel/build/raylib/build -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
