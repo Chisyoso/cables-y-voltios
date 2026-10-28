@@ -62,7 +62,19 @@ std::vector<obje> obj;
      void obje::bus(){
          dista = 10000;
          busc = -1;
-         
+         if(ob == 2){
+        for(int i = 0; i < static_cast<int>(obj.size()); i++){
+            if( igualc(obj[i].t, t) && obj[i].ob != 2){
+                int distan = dis(x, y, obj[i].x, obj[i].y);
+             if(dista > distan){
+                 busc = i;
+                 checker = obj[busc].ob;
+                 dista = distan;
+             }    
+            }
+        }     
+         }
+         else{
         for(int i = 0; i < static_cast<int>(obj.size()); i++){
             if(!( igualc(obj[i].t, t) )){
                 int distan = dis(x, y, obj[i].x, obj[i].y);
@@ -73,7 +85,7 @@ std::vector<obje> obj;
              }    
             }
         }
-    
+    }
     }
     void obje::atack(){
         
@@ -121,7 +133,7 @@ std::vector<obje> obj;
             dis = 150;
         }
         else if(ob == 5){
-            dis = 5;
+            dis = 10;
         }
         
         if(checker != obj[busc].ob){
@@ -140,13 +152,12 @@ std::vector<obje> obj;
              x += 3/a;
              
         }
-        if(obj[busc].x > x - dis || obj[busc].x < x + dis){
-            if(obj[busc].y < y - dis){
+        else if(obj[busc].y < y - dis){
             y -= 3/a;
         }
         else if(obj[busc].y > y + dis){
              y += 3/a;
-        }
+        
         }
     }
     else if(r < 80){
@@ -156,8 +167,8 @@ std::vector<obje> obj;
         else if(obj[busc].y > y + dis){
              y += 3/a;
         }
-         if(obj[busc].y > y - dis || obj[busc].x < x + 10 ){
-            if(obj[busc].x < x - dis){
+
+        else if(obj[busc].x < x - dis){
             x-= 3/a;
         }
         else if(obj[busc].x > x + dis){
@@ -165,7 +176,7 @@ std::vector<obje> obj;
              
         }
         }
-    }
+    
     
     else{
         if(obj[busc].x < x - dis){
@@ -184,6 +195,7 @@ std::vector<obje> obj;
         }
         
     }
+    
         life(x, y + 40 , ohm, vx);
         
         atack();
